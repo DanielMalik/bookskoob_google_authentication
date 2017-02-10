@@ -1,0 +1,45 @@
+{% extends 'books/base_template.html' %}
+
+{% block title %}
+    All Books
+{% endblock %}
+
+{% block content %}
+    <div class="panel panel-success">
+        <div class="panel-heading">
+            <h1> All books </h1>
+        </div>
+        <div class="panel-body">
+        {% for book in books %}
+
+                {% if forloop.first %}
+            <div class="row">
+                {% endif %}
+
+                <div class="col-xs-4">
+
+                    <h3><a href="#"> {{ book.title }} </a></h3>
+
+                    <h4> {{ book.author }} </h4>
+
+                    <p> {{ book.genre }} </p>
+
+                    <p> {{ book.publisher }} </p>
+
+                    <p> {{ book.isbn }} </p>
+
+                    <p> {{ book.description }} </p>
+
+                </div>
+
+            {% if forloop.counter|divisibleby:3 %}
+            </div><div class="row">
+            {% endif %}
+
+            {% if forloop.last %}
+            </div>
+            {% endif %}
+        {% endfor %}
+        </div>
+    </div>
+{% endblock %}

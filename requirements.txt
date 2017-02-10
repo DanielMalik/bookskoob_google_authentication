@@ -1,0 +1,11 @@
+-e git+https://github.com/DanielMalik/flask_blog_.git@d219113cf77a448979c2ab25cb5375d0fc523d63#egg=app
+
+Django==1.10.5
+django-allauth==0.30.0
+django-social-auth==0.7.28
+httplib2==0.10.3
+mongoengine==0.11.0
+oauth2==1.9.0.post1
+oauthlib==1.1.2
+sqlparse==0.2.2
+

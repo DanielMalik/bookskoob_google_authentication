@@ -1,9 +1,7 @@
 # -*- coding: utf-8 -*-
 from django.db import models
+from django.contrib.sites.models import Site
 
-# Create your models here.
-class User(models.Model):
-    pass
 
 GENRES = (
     (1, "Romans"),
