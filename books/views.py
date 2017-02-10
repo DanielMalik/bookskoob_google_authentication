@@ -17,15 +17,15 @@ class ViewAllBooks(LoginRequiredMixin, View):
 class BookAddGeneric(CreateView):
     model = Book
     fields = '__all__'
-    success_url = 'all'
+    success_url = '/all'
 
 class BookUpdateGeneric(UpdateView):
     model = Book
     fields = '__all__'
-    success_url = 'all'
+    success_url = '/all'
 
 class BookDeleteGeneric(DeleteView):
     model = Book
     fields = ['title']
     template_name_suffix = '_delete_form'
-    success_url = 'all'
+    success_url = '/all'
