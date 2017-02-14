@@ -4,7 +4,6 @@ from django.views import View
 from django.views.generic import CreateView, DeleteView, UpdateView
 from django.contrib.auth.mixins import LoginRequiredMixin
 
-
 # Create your views here.
 
 class ViewAllBooks(LoginRequiredMixin, View):

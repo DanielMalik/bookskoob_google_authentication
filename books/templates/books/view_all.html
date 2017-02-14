@@ -7,7 +7,7 @@
 {% block content %}
     <div class="panel panel-success">
         <div class="panel-heading">
-            <h1> All books </h1>
+            <h1> Wszystkie książki </h1>
         </div>
         <div class="panel-body">
         {% for book in books %}
@@ -18,7 +18,7 @@
 
                 <div class="col-xs-4">
 
-                    <h3>tytuł: <a href="#"> {{ book.title }} </a></h3>
+                    <h3>tytuł: <a href="book_edit/{{ book.id }}"> {{ book.title }} </a></h3>
 
                     <h4>autor: {{ book.author }} </h4>
 
@@ -28,6 +28,15 @@
 
                     <p>ISBN: {{ book.isbn }} </p>
 
+                    <p> DEBUG: available: {{ book.available }} </p>
+
+                    {% if book.available %}
+                        <button class="btn btn-primary">WYPOŻYCZ</button>
+                        <button class="btn btn-danger" disabled>ODDAJ</button>
+                    {% else %}
+                        <button class="btn btn-primary" disabled>WYPOŻYCZ</button>
+                        <button class="btn btn-danger" >ODDAJ</button>
+                    {% endif %}
                     <p><strong>OPIS:</strong> {{ book.description }} </p>
 
                 </div>
