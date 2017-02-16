@@ -16,7 +16,7 @@ Including another URLconf
 from django.conf.urls import include, url
 from django.contrib import admin
 from django.contrib.auth.views import logout_then_login
-from books.views import ViewAllBooks, BookAddGeneric, BookUpdateGeneric, BookDeleteGeneric, LogsView
+from books.views import ViewAllBooks, BookAddGeneric, BookUpdateGeneric, BookDeleteGeneric, LogsView, BookDetailsView
 
 
 urlpatterns = [
@@ -30,4 +30,5 @@ urlpatterns = [
     url(r'^book_edit/(?P<pk>\d+)/?$', BookUpdateGeneric.as_view(), name='book-edit'),
     url(r'^book_delete/(?P<pk>\d+)/?$', BookDeleteGeneric.as_view(), name='book-delete'),
     url(r'^history/?$', LogsView.as_view(), name='history'),
+    url(r'^book/(?P<pk>(\d)+)$', BookDetailsView.as_view(), name="book"),
 ]

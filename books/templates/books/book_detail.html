@@ -1,0 +1,42 @@
+{% extends 'books/base_template.html' %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+
+            <h3>tytuł: {{ object.title }} </a></h3>
+
+            <h4>autor: {{ object.author }} </h4>
+
+            <p>gatunek: {{ object.get_genre_display }} </p>
+
+            <p>wydawca:  {{ object.publisher }} </p>
+
+            <p>ISBN: {{ object.isbn }} </p>
+
+            <!--<p> DEBUG: available: {{ book.available }} </p>-->
+
+            {% if object.available %}
+                <form action="#" method="POST">
+                    {% csrf_token %}
+                    <input type="hidden" value="{{ object.id }}" name="click">
+                    <button type="submit" class="btn btn-primary" name="action" value="lent">WYPOŻYCZ</button>
+                    <button class="btn btn-warning" disabled>ODDAJ</button>
+                </form>
+            {% else %}
+                <form action="#" method="POST">
+                    {% csrf_token %}
+                    <button class="btn btn-primary" disabled>WYPOŻYCZ</button>
+                    <input type="hidden" value="{{ object.id }}" name="click">
+                    <button type="submit" class="btn btn-warning" name="action" value="return">ODDAJ</button>
+                </form>
+            {% endif %}
+            <p><strong>OPIS:</strong> {{ book.description }} </p>
+
+
+        </div>
+    </div>
+{% endblock %}
+
+
+

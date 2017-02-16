@@ -88,6 +88,7 @@ TEMPLATES = [
     },
 ]
 
+
 WSGI_APPLICATION = 'bookskoob.wsgi.application'
 
 

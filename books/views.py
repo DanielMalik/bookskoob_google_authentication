@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from books.models import Book, Logs
 from django.views import View
-from django.views.generic import CreateView, DeleteView, UpdateView, ListView
+from django.views.generic import CreateView, DeleteView, UpdateView, ListView, DetailView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from datetime import datetime
 
@@ -49,6 +49,9 @@ class BookDeleteGeneric(DeleteView):
     fields = ['title']
     template_name_suffix = '_delete_form'
     success_url = '/all'
+
+class BookDetailsView(DetailView):
+    model = Book
 
 class LogsView(ListView):
     model = Logs
