@@ -31,11 +31,19 @@
                     <p> DEBUG: available: {{ book.available }} </p>
 
                     {% if book.available %}
-                        <button class="btn btn-primary">WYPOŻYCZ</button>
-                        <button class="btn btn-danger" disabled>ODDAJ</button>
+                        <form action="#" method="POST">
+                            {% csrf_token %}
+                            <input type="hidden" value="{{ book.id }}" name="click">
+                            <button type="submit" class="btn btn-primary" name="action" value="lent">WYPOŻYCZ</button>
+                            <button class="btn btn-danger" disabled>ODDAJ</button>
+                        </form>
                     {% else %}
-                        <button class="btn btn-primary" disabled>WYPOŻYCZ</button>
-                        <button class="btn btn-danger" >ODDAJ</button>
+                        <form action="#" method="POST">
+                            {% csrf_token %}
+                            <button class="btn btn-primary" disabled>WYPOŻYCZ</button>
+                            <input type="hidden" value="{{ book.id }}" name="click">
+                            <button type="submit" class="btn btn-danger" name="action" value="return">ODDAJ</button>
+                        </form>
                     {% endif %}
                     <p><strong>OPIS:</strong> {{ book.description }} </p>
 

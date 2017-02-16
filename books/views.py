@@ -1,14 +1,35 @@
 from django.shortcuts import render
-from books.models import Book
+from books.models import Book, Logs
 from django.views import View
 from django.views.generic import CreateView, DeleteView, UpdateView
 from django.contrib.auth.mixins import LoginRequiredMixin
+from datetime import datetime
 
 # Create your views here.
 
 class ViewAllBooks(LoginRequiredMixin, View):
 
     def get(self, request):
+        books = Book.objects.all()
+
+        return render(request, 'books/view_all.html', {'books': books})
+
+    def post(self, request):
+        user = request.user
+        book_id = request.POST.get('click')
+        action = request.POST.get('action')
+        book = Book.objects.get(pk=book_id)
+        if action == 'lent':
+            book.available = False
+            book.save()
+            log = Logs.objects.create(book=book, user=user, date_get=datetime.now())
+            log.save()
+        elif action == 'return':
+            book.available = True
+            book.save()
+            log = Logs.objects.create(book=book, user=user, return_date=datetime.now())
+            log.save()
+
         books = Book.objects.all()
 
         return render(request, 'books/view_all.html', {'books': books})
