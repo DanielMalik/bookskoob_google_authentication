@@ -21,8 +21,11 @@
                 <p> Logged as : {{ user.username }}</p>
                 <a id="logout" href="/accounts/logout" class="btn btn-success">Logout</a>
             {% else %}
-                 <a id="google_login" href="/all" class="btn btn-success">Sign in with Google</a>
+                 <a id="google_login" href="{% url 'all-books' %}" class="btn btn-success">Sign in with Google</a>
             {% endif %}
+            <a href="{% url 'all-books' %}" class="btn btn-secondary">all books</a>
+            <a href="{% url 'history' %}" class="btn btn-secondary">my history</a>
+            <a href="{% url 'book-new' %}" class="btn btn-secondary">add new book</a>
         </div>
     </div><!--/.navbar-collapse -->
 

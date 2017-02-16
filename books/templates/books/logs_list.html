@@ -1,0 +1,18 @@
+{% extends 'books/base_template.html' %}
+
+{% block content %}
+
+    <h1>Historia wypożyczeń</h1>
+    <h2> użytkownik <stron>{{ user.username }}</stron></h2>
+    {% for log in object_list %}
+        <div>
+        <p>tytuł: {{ log.book }} </p>
+            {% if log.date_get %}
+            <p><strong>wypożyczono:</strong> {{ log.date_get }}</p>
+            {% elif log.return_date %}
+            <p><strong>oddano:</strong> {{ log.return_date }}</p>
+            {% endif %}
+        </div>
+    {% endfor %}
+{% endblock %}
+
