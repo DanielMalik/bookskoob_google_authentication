@@ -25,7 +25,7 @@ urlpatterns = [
     url(r'^accounts/login', logout_then_login, name='login'),
     url(r'^admin/', admin.site.urls),
     url(r'^log/$', logout_then_login, name='login-logout'),
-    url(r'^/?$', ViewAllBooks.as_view(), name='all-books'),
+    url(r'^$', ViewAllBooks.as_view(), name='all-books'),
     url(r'^new/?$', BookAddGeneric.as_view(), name='book-new'),
     url(r'^book_edit/(?P<pk>\d+)/?$', BookUpdateGeneric.as_view(), name='book-edit'),
     url(r'^book_delete/(?P<pk>\d+)/?$', BookDeleteGeneric.as_view(), name='book-delete'),

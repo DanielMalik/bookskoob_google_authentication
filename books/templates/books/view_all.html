@@ -28,24 +28,26 @@
 
                     <p>ISBN: {{ book.isbn }} </p>
 
-                    <p> DEBUG: available: {{ book.available }} </p>
+                    <!--<p> DEBUG: available: {{ book.available }} </p>-->
 
                     {% if book.available %}
                         <form action="#" method="POST">
                             {% csrf_token %}
                             <input type="hidden" value="{{ book.id }}" name="click">
                             <button type="submit" class="btn btn-primary" name="action" value="lent">WYPOŻYCZ</button>
-                            <button class="btn btn-danger" disabled>ODDAJ</button>
+                            <button class="btn btn-warning" disabled>ODDAJ</button>
                         </form>
                     {% else %}
                         <form action="#" method="POST">
                             {% csrf_token %}
                             <button class="btn btn-primary" disabled>WYPOŻYCZ</button>
                             <input type="hidden" value="{{ book.id }}" name="click">
-                            <button type="submit" class="btn btn-danger" name="action" value="return">ODDAJ</button>
+                            <button type="submit" class="btn btn-warning" name="action" value="return">ODDAJ</button>
                         </form>
                     {% endif %}
                     <p><strong>OPIS:</strong> {{ book.description }} </p>
+                    <a href="book_edit/{{ book.id }}" class="btn btn-success btn-xs">EDIT this book</a>
+                    <a href="book_delete/{{ book.id }}" class="btn btn-danger btn-xs">DELETE this book</a>
 
                 </div>
 
